@@ -1,32 +1,38 @@
 package Test;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.*;
+import java.util.StringTokenizer;
+
 public class Main {
 	public static void main(String[] args) throws IOException {
-
-
-		String alp = "abcdefghijklmnopqrstuvwxyz";
+		
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
-		String word = br.readLine();
-		String[] wordArray = word.split("");
-		String[] alpArray = alp.split("");
-		boolean check;
-
-		for(int j=0;j<alpArray.length;j++) {
-			check = false;
-			for(int i=0;i<wordArray.length;i++) {
-				if(wordArray[i].equals(alpArray[j])) {
-					System.out.print(i+" ");
-					check=true;
+		
+		int Num;
+		Num = Integer.parseInt(br.readLine());
+		
+		for(int i=0;i<Num;i++) {
+			StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+			int count = Integer.parseInt(st.nextToken());
+			
+			
+			String alp = st.nextToken();
+			StringTokenizer st2 = new StringTokenizer(alp);
+			String[] word = new String[st2.countTokens()];
+			int j = 0;
+			//배열 만들기
+			
+			while(st2.hasMoreTokens()) {
+				word[j] = st2.nextToken();
+				
+				for(int k=0;k<count;k++) {
+					System.out.print(word[j]);
 				}
+				j++;
 			}
-			if(check != true) {
-				System.out.print(-1+" ");
-			}
+			System.out.println();
 		}
 	}
-	//baekjoon	
 }
